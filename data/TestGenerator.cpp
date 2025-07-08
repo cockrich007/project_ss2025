@@ -5,10 +5,9 @@
 #include <climits>
 #include "TestGenerator.h"
 
-using namespace std;
 
 // заполняет вектор элементами по возрастанию от begin до num
-void TestGenerator::DataAscend(int begin = 0, int num) {
+void TestGenerator::DataAscend(int begin, int num) {
     Data.clear();
 
     for (int i = begin; i < num; i += 1) {
@@ -29,26 +28,26 @@ void TestGenerator::DataRandom(int num, int low, int high) {
 
 // разбивает вектор размером num на fract частей и заполняет их четными\нечетными числами (чередуя части). increase выбирает идут они
 // по возрастанию или по убыванию
-void TestGenerator::DataOddEven(int num, int fract=2, bool increase=true) {
+void TestGenerator::DataOddEven(int num, int fract, bool increase) {
     Data.clear();
     for (int x = 0; x < fract; x += 1) {
         if (increase) {
             if (x % 2 == 0) {
-                for (int i = 0; i < ((num / fract) * 2); i += 2)
+                for (int i = 0; i < ((num / fract)); i += 2)
                     Data.push_back(i);
             }
             else {
-                for (int i = 1; i < ((num / fract) * 2); i += 2)
+                for (int i = 1; i < ((num / fract)); i += 2)
                     Data.push_back(i);
             }
         }
         else {
             if (x % 2 == 0) {
-                for (int i = ((num / fract) * 2); i > 0; i -= 2)
+                for (int i = ((num / fract)); i > 0; i -= 2)
                     Data.push_back(i);
             }
             else {
-                for (int i = ((num / fract) * 2 + 1); i > 0; i -= 2)
+                for (int i = ((num / fract) + 1); i > 0; i -= 2)
                     Data.push_back(i);
             }
         }
@@ -56,7 +55,7 @@ void TestGenerator::DataOddEven(int num, int fract=2, bool increase=true) {
 }
 
 // заполняет вектор прыгающими данными (increase выбирает уменьшается разрыв или увеличивается(изначально уменьшается))
-void TestGenerator::DataJump(int num, bool increase=false) {
+void TestGenerator::DataJump(int num, bool increase) {
     Data.clear();
 
     int low_num = 0;
@@ -94,7 +93,3 @@ void TestGenerator::DataStress(int power_of_ten) {
         Data.push_back(i);
     }
 }
-
-
-
-

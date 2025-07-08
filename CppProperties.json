@@ -1,9 +1,9 @@
 {
   "configurations": [
     {
-      "inheritEnvironments": [
-        "msvc_x64"
-      ],
+        "inheritEnvironments": [
+            "msvc_x64"
+        ],
       "name": "x64-Debug",
       "includePath": [
         "${env.INCLUDE}",

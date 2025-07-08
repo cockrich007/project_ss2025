@@ -1,12 +1,14 @@
 #pragma once
 
 #include <iostream>
+#include <vector>
 
 struct TestGenerator {
-	TestGenerator() {}	
+	TestGenerator() {}
 
 	std::vector<int> Data;
 
+public:
 	// заполняет вектор элементами по возрастанию от begin до num
 	void DataAscend(int begin, int num);
 
@@ -26,5 +28,3 @@ struct TestGenerator {
 	// Заполняет вектор возрастающими значениями в количестве десять в степени power_of_ten
 	void DataStress(int power_of_ten);
 };
-
-#include "TestGenerator.cpp"
