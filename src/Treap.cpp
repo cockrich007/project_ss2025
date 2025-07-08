@@ -124,8 +124,8 @@ void Treap<T>::erase(T key) {
 
 template <typename T>
 bool Treap<T>::contains(T key) {
-    root = find_by_key(root, key);
-    return root && root->key == key;
+    Node<T>* node = find_by_key(root, key);
+    return node && node->key == key;
 }
 
 template <typename T>
