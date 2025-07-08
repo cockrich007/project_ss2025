@@ -3,12 +3,12 @@
 #include <random>
 #include <chrono>
 #include <climits>
-#include <Generator.h>
+#include "TestGenerator.h"
 
 using namespace std;
 
 // заполняет вектор элементами по возрастанию от begin до num
-void Generator::DataAscend(int begin = 0, int num) {
+void TestGenerator::DataAscend(int begin = 0, int num) {
     Data.clear();
 
     for (int i = begin; i < num; i += 1) {
@@ -17,19 +17,19 @@ void Generator::DataAscend(int begin = 0, int num) {
 }
 
 // заполняет вектор num случайными элементами, в диапазоне от low до high
-void Generator::DataRandom(int num, int low, int high) {
+void TestGenerator::DataRandom(int num, int low, int high) {
     Data.clear();
-    std::mt19937 generator(std::chrono::steady_clock::now().time_since_epoch().count());
+    std::mt19937 TestGenerator(std::chrono::steady_clock::now().time_since_epoch().count());
     std::uniform_int_distribution<int> distribution(low, high);
     for (int i = 0; i < num; i += 1) {
-        int number = distribution(generator);
+        int number = distribution(TestGenerator);
         Data.push_back(number);
     }
 }
 
 // разбивает вектор размером num на fract частей и заполняет их четными\нечетными числами (чередуя части). increase выбирает идут они
 // по возрастанию или по убыванию
-void Generator::DataOddEven(int num, int fract=2, bool increase=true) {
+void TestGenerator::DataOddEven(int num, int fract=2, bool increase=true) {
     Data.clear();
     for (int x = 0; x < fract; x += 1) {
         if (increase) {
@@ -56,7 +56,7 @@ void Generator::DataOddEven(int num, int fract=2, bool increase=true) {
 }
 
 // заполняет вектор прыгающими данными (increase выбирает уменьшается разрыв или увеличивается(изначально уменьшается))
-void Generator::DataJump(int num, bool increase=false) {
+void TestGenerator::DataJump(int num, bool increase=false) {
     Data.clear();
 
     int low_num = 0;
@@ -79,16 +79,16 @@ void Generator::DataJump(int num, bool increase=false) {
 }
 
 // Заполняет вектор граничными значениями
-void Generator::DataEdge() {
+void TestGenerator::DataEdge() {
     Data.clear();
     for (int i = 0; i < 10; i++) {
-        Data.push_back(INT64_MAX);
-        Data.push_back(INT64_MIN);
+        Data.push_back(INT32_MAX);
+        Data.push_back(INT32_MIN);
     }
 }
 
 // Заполняет вектор возрастающими значениями в количестве десять в степени power_of_ten
-void Generator::DataStress(int power_of_ten) {
+void TestGenerator::DataStress(int power_of_ten) {
     Data.clear();
     for (int i = 0; i < pow(10, power_of_ten); i++) {
         Data.push_back(i);

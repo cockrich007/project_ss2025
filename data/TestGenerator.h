@@ -1,21 +1,24 @@
 #pragma once
 
-class Generator {
-public:
+#include <iostream>
+
+struct TestGenerator {
+	TestGenerator() {}	
+
 	std::vector<int> Data;
 
 	// заполняет вектор элементами по возрастанию от begin до num
-	void DataAscend(int begin = 0, int num);
+	void DataAscend(int begin, int num);
 
 	// заполняет вектор num случайными элементами, в диапазоне от low до high
 	void DataRandom(int num, int low, int high);
 
 	// разбивает вектор размером num на fract частей и заполняет их четными\нечетными числами (чередуя). increase выбирает идут они
 	// по возрастанию или по убыванию
-	void DataOddEven(int num, int fract=2, bool increase=true);
+	void DataOddEven(int num, int fract, bool increase);
 
 	// заполняет вектор прыгающими данными (increase выбирает уменьшается разрыв или увеличивается(изначально уменьшается))
-	void DataJump(int num, bool increase=false);
+	void DataJump(int num, bool increase);
 
 	// Заполняет вектор граничными значениями
 	void DataEdge();
@@ -24,3 +27,4 @@ public:
 	void DataStress(int power_of_ten);
 };
 
+#include "TestGenerator.cpp"
