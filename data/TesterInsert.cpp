@@ -47,22 +47,29 @@ void generate_tests() {
     //}
     //outfile.close();
 
-    outfile.open("D:/ss25project/data/inputs/Jump_Input_inc.txt");
-    gen.DataJump(10000, true);
-    for (auto element : gen.Data) {
-        outfile << element << ' ';
-    }
-    outfile.close();
+    //outfile.open("D:/ss25project/data/inputs/Jump_Input_inc.txt");
+    //gen.DataJump(10000, true);
+    //for (auto element : gen.Data) {
+    //    outfile << element << ' ';
+    //}
+    //outfile.close();
 
-    outfile.open("D:/ss25project/data/inputs/Jump_Input_dic.txt");
-    gen.DataJump(10000, false);
-    for (auto element : gen.Data) {
-        outfile << element << ' ';
-    }
-    outfile.close();
+    //outfile.open("D:/ss25project/data/inputs/Jump_Input_dic.txt");
+    //gen.DataJump(10000, false);
+    //for (auto element : gen.Data) {
+    //    outfile << element << ' ';
+    //}
+    //outfile.close();
 
-    outfile.open("D:/ss25project/data/inputs/Edge_input.txt");
-    gen.DataEdge();
+    //outfile.open("D:/ss25project/data/inputs/Edge_input.txt");
+    //gen.DataEdge();
+    //for (auto element : gen.Data) {
+    //    outfile << element << ' ';
+    //}
+    //outfile.close();
+
+    outfile.open("D:/ss25project/data/inputs/Stress_input.txt");
+    gen.DataStress(7);
     for (auto element : gen.Data) {
         outfile << element << ' ';
     }
