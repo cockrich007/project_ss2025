@@ -76,7 +76,11 @@ void generate_tests() {
     outfile.close();
 }
 
-int main() {
+/*
+ 
+ int main() {
     generate_tests();
     return 0;
-}
+ }
+ 
+ */
