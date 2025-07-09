@@ -64,7 +64,7 @@
               "RelativeDocumentMoniker": "data\\TestGenerator.cpp",
               "ToolTip": "D:\\ss25project\\data\\TestGenerator.cpp",
               "RelativeToolTip": "data\\TestGenerator.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAF8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-07-08T13:42:50.781Z",
               "EditorCaption": ""
@@ -91,8 +91,7 @@
               "RelativeToolTip": "src\\SimpleTree.cpp",
               "ViewState": "AgIAAHsAAAAAAAAAAAAAAHgAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-07-08T10:55:10.322Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-08T10:55:10.322Z"
             },
             {
               "$type": "Document",
@@ -104,8 +103,7 @@
               "RelativeToolTip": "src\\SplayTree.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAADwAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-07-08T12:05:48.366Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-08T12:05:48.366Z"
             },
             {
               "$type": "Document",
@@ -117,8 +115,7 @@
               "RelativeToolTip": "src\\RBTree.h",
               "ViewState": "AgIAACoAAAAAAAAAAAAAAC0AAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-07-08T10:48:49.641Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-08T10:48:49.641Z"
             },
             {
               "$type": "Document",
@@ -130,8 +127,7 @@
               "RelativeToolTip": "src\\RBTree.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAHkAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-07-08T10:48:12.804Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-08T10:48:12.804Z"
             }
           ]
         }
