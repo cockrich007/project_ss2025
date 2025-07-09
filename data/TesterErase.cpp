@@ -31,7 +31,7 @@ void test_erase() {
     size_t length_input_names = input_names.size();
 
 
-    // std::ofstream outFile1("D:/ss25project/data/outputs/inserts/Splay_insert_height.csv");
+    std::ofstream outFile1("D:/ss25project/data/outputs/erases/Splay_erase_height.csv");
     std::ofstream outFile2("D:/ss25project/data/outputs/erases/Splay_erase_time.csv");
 
 
@@ -44,6 +44,7 @@ void test_erase() {
 
         std::vector<int> Data_for_erase;
 
+        outFile1 << "Тестовые данные " << i + 1 << ": ";
         outFile2 << "Тестовые данные " << i + 1 << ": ";
 
         if (inputFile.is_open()) {
@@ -62,14 +63,19 @@ void test_erase() {
                 auto start = clocks::now();
                 SplayTree1.erase(Data_for_erase[x]);
                 auto elapsed = clocks::now() - start;
+                outFile1 << SplayTree1.get_tree_height() << " ";
                 outFile2 << std::chrono::duration_cast<nanoseconds>(elapsed).count() << " ";
+                outFile1.flush();
                 outFile2.flush();
             }
+            outFile1 << std::endl;
             outFile2 << std::endl;
+            outFile1.flush();
             outFile2.flush();
         }
         inputFile.close();
     }
+    outFile1.close();
     outFile2.close();
 
 
@@ -114,7 +120,7 @@ void test_erase() {
     //outFile4.close();
 
 
-    //    // std::ofstream outFile5("D:/ss25project/data/outputs/inserts/Treap_insert_height.csv");
+    std::ofstream outFile5("D:/ss25project/data/outputs/erases/Treap_erase_height.csv");
     std::ofstream outFile6("D:/ss25project/data/outputs/erases/Treap_erase_time.csv");
 
     for (size_t i = 0; i < length_input_names; i++) //erase time для Simple
@@ -126,6 +132,7 @@ void test_erase() {
 
         std::vector<int> Data_for_erase;
 
+        outFile5 << "Тестовые данные " << i + 1 << ": ";
         outFile6 << "Тестовые данные " << i + 1 << ": ";
 
         if (inputFile.is_open()) {
@@ -144,14 +151,19 @@ void test_erase() {
                 auto start = clocks::now();
                 Treap1.erase(Data_for_erase[x]);
                 auto elapsed = clocks::now() - start;
+                outFile5 << Treap1.get_tree_height() << " ";
                 outFile6 << std::chrono::duration_cast<nanoseconds>(elapsed).count() << " ";
+                outFile5.flush();
                 outFile6.flush();
             }
+            outFile5 << std::endl;
             outFile6 << std::endl;
+            outFile5.flush();
             outFile6.flush();
         }
         inputFile.close();
     }
+    outFile5.close();
     outFile6.close();
     
 

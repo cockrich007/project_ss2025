@@ -3,6 +3,26 @@
   "WorkspaceRootPath": "D:\\ss25project\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\ss25project\\data\\Generator.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:data\\Generator.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\ss25project\\data\\TesterErase.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:data\\TesterErase.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\ss25project\\data\\TesterInsert.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:data\\TesterInsert.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\ss25project\\data\\TesterSearch.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:data\\TesterSearch.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\ss25project\\data\\TestGenerator.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:data\\TestGenerator.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\ss25project\\data\\TestGenerator.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:data\\TestGenerator.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -38,7 +58,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,7 +66,72 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Generator.cpp",
+              "DocumentMoniker": "D:\\ss25project\\data\\Generator.cpp",
+              "RelativeDocumentMoniker": "data\\Generator.cpp",
+              "ToolTip": "D:\\ss25project\\data\\Generator.cpp",
+              "RelativeToolTip": "data\\Generator.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-07-09T21:52:35.58Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TesterErase.cpp",
+              "DocumentMoniker": "D:\\ss25project\\data\\TesterErase.cpp",
+              "RelativeDocumentMoniker": "data\\TesterErase.cpp",
+              "ToolTip": "D:\\ss25project\\data\\TesterErase.cpp",
+              "RelativeToolTip": "data\\TesterErase.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-07-09T21:52:33.99Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TesterInsert.cpp",
+              "DocumentMoniker": "D:\\ss25project\\data\\TesterInsert.cpp",
+              "RelativeDocumentMoniker": "data\\TesterInsert.cpp",
+              "ToolTip": "D:\\ss25project\\data\\TesterInsert.cpp",
+              "RelativeToolTip": "data\\TesterInsert.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-07-09T21:52:33.155Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "TesterSearch.cpp",
+              "DocumentMoniker": "D:\\ss25project\\data\\TesterSearch.cpp",
+              "RelativeDocumentMoniker": "data\\TesterSearch.cpp",
+              "ToolTip": "D:\\ss25project\\data\\TesterSearch.cpp",
+              "RelativeToolTip": "data\\TesterSearch.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-07-09T21:52:32.301Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TestGenerator.h",
+              "DocumentMoniker": "D:\\ss25project\\data\\TestGenerator.h",
+              "RelativeDocumentMoniker": "data\\TestGenerator.h",
+              "ToolTip": "D:\\ss25project\\data\\TestGenerator.h",
+              "RelativeToolTip": "data\\TestGenerator.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-07-09T21:52:29.46Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "CppProperties.json",
               "DocumentMoniker": "D:\\ss25project\\CppProperties.json",
               "RelativeDocumentMoniker": "CppProperties.json",
@@ -58,20 +143,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "TestGenerator.cpp",
               "DocumentMoniker": "D:\\ss25project\\data\\TestGenerator.cpp",
               "RelativeDocumentMoniker": "data\\TestGenerator.cpp",
               "ToolTip": "D:\\ss25project\\data\\TestGenerator.cpp",
               "RelativeToolTip": "data\\TestGenerator.cpp",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAAAF4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-07-08T13:42:50.781Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "SplayTree.h",
               "DocumentMoniker": "D:\\ss25project\\src\\SplayTree.h",
               "RelativeDocumentMoniker": "src\\SplayTree.h",
@@ -83,7 +168,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "SimpleTree.cpp",
               "DocumentMoniker": "D:\\ss25project\\src\\SimpleTree.cpp",
               "RelativeDocumentMoniker": "src\\SimpleTree.cpp",
@@ -95,7 +180,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
               "Title": "SplayTree.cpp",
               "DocumentMoniker": "D:\\ss25project\\src\\SplayTree.cpp",
               "RelativeDocumentMoniker": "src\\SplayTree.cpp",
@@ -107,7 +192,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 11,
               "Title": "RBTree.h",
               "DocumentMoniker": "D:\\ss25project\\src\\RBTree.h",
               "RelativeDocumentMoniker": "src\\RBTree.h",
@@ -119,7 +204,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 10,
               "Title": "RBTree.cpp",
               "DocumentMoniker": "D:\\ss25project\\src\\RBTree.cpp",
               "RelativeDocumentMoniker": "src\\RBTree.cpp",

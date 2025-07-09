@@ -30,7 +30,7 @@ void test_search() {
 
     size_t length_input_names = input_names.size();
 
-    // std::ofstream outFile1("D:/ss25project/data/outputs/inserts/Splay_insert_height.csv");
+    std::ofstream outFile1("D:/ss25project/data/outputs/searches/Splay_search_height.csv");
     std::ofstream outFile2("D:/ss25project/data/outputs/searches/Splay_search_time.csv");
 
     for (size_t i = 0; i < length_input_names; i++) //erase time для Splay
@@ -42,6 +42,7 @@ void test_search() {
 
         std::vector<int> Data_for_search;
 
+        outFile1 << "Тестовые данные " << i + 1 << ": ";
         outFile2 << "Тестовые данные " << i + 1 << ": ";
 
         if (inputFile.is_open()) {
@@ -62,18 +63,23 @@ void test_search() {
                 auto start = clocks::now();
                 SplayTree1.find_by_id(Data_for_search[x]);
                 auto elapsed = clocks::now() - start;
+                outFile1 << SplayTree1.get_tree_height() << " ";
                 outFile2 << std::chrono::duration_cast<nanoseconds>(elapsed).count() << " ";
+                outFile1.flush();
                 outFile2.flush();
             }
+            outFile1 << std::endl;
             outFile2 << std::endl;
+            outFile1.flush();
             outFile2.flush();
         }
         inputFile.close();
     }
+    outFile1.close();
     outFile2.close();
 
 
-    // std::ofstream outFile3("D:/ss25project/data/outputs/inserts/Simple_insert_height.csv");
+    std::ofstream outFile3("D:/ss25project/data/outputs/searches/Simple_search_height.csv");
     std::ofstream outFile4("D:/ss25project/data/outputs/searches/Simple_search_time.csv");
 
     for (size_t i = 0; i < length_input_names; i++) //erase time для Simple
@@ -85,6 +91,7 @@ void test_search() {
 
         std::vector<int> Data_for_search;
 
+        outFile3 << "Тестовые данные " << i + 1 << ": ";
         outFile4 << "Тестовые данные " << i + 1 << ": ";
 
         if (inputFile.is_open()) {
@@ -105,18 +112,23 @@ void test_search() {
                 auto start = clocks::now();
                 SimpleTree1.find_by_id(Data_for_search[x]);
                 auto elapsed = clocks::now() - start;
+                outFile3 << SimpleTree1.get_tree_height() << " ";
                 outFile4 << std::chrono::duration_cast<nanoseconds>(elapsed).count() << " ";
+                outFile3.flush();
                 outFile4.flush();
             }
+            outFile3 << std::endl;
             outFile4 << std::endl;
+            outFile3.flush();
             outFile4.flush();
         }
         inputFile.close();
     }
+    outFile3.close();
     outFile4.close();
 
 
-    //    // std::ofstream outFile5("D:/ss25project/data/outputs/inserts/Treap_insert_height.csv");
+    std::ofstream outFile5("D:/ss25project/data/outputs/searches/Treap_search_height.csv");
     std::ofstream outFile6("D:/ss25project/data/outputs/searches/Treap_search_time.csv");
 
     for (size_t i = 0; i < length_input_names; i++) //erase time для Simple
@@ -128,6 +140,7 @@ void test_search() {
 
         std::vector<int> Data_for_search;
 
+        outFile5 << "Тестовые данные " << i + 1 << ": ";
         outFile6 << "Тестовые данные " << i + 1 << ": ";
 
         if (inputFile.is_open()) {
@@ -148,14 +161,19 @@ void test_search() {
                 auto start = clocks::now();
                 Treap1.find_by_id(Data_for_search[x]);
                 auto elapsed = clocks::now() - start;
+                outFile5 << Treap1.get_tree_height() << " ";
                 outFile6 << std::chrono::duration_cast<nanoseconds>(elapsed).count() << " ";
+                outFile5.flush();
                 outFile6.flush();
             }
+            outFile5 << std::endl;
             outFile6 << std::endl;
+            outFile5.flush();
             outFile6.flush();
         }
         inputFile.close();
     }
+    outFile5.close();
     outFile6.close();
 
 }
