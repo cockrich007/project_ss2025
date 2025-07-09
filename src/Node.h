@@ -13,6 +13,13 @@ struct Node {
     Node();
     Node(T _key);
     Node(T _key, Node<T>* l, Node<T>* r);
+    /*~Node() {
+        if (height == 7500) {
+            std::cout << "?";
+        }
+        delete left;
+        delete right;
+    }*/
 };
 
 // Impl

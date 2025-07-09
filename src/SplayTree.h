@@ -29,7 +29,9 @@ private:
 public:
     SplayTree() : root(nullptr) {}
     SplayTree(T _key) : root(new Node<T>(_key)) {}
-    ~SplayTree() { destruct(root); }
+    ~SplayTree() { 
+        destruct(root);
+    }
 
     void insert(T key);
     void erase(T key);
