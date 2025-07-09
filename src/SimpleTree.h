@@ -8,6 +8,10 @@ struct SimpleTree {
     Node<T>* root;
     int size;
 
+    int get_height(Node<T>* node);
+    int get_subtree_size(Node<T>* node);
+    void update_info(Node<T>* node);
+
     void erase(Node<T>* node, T value);
     T find_by_id(int id, Node<T>* cur_node, int &pos);
     void find_floor(T key, Node<T>* cur_node, T &local_max);
@@ -18,6 +22,8 @@ struct SimpleTree {
     SimpleTree(T key);
     SimpleTree(Node<T>* root);
     ~SimpleTree();
+
+    int get_tree_height();
 
     void insert(T value);
     void erase(T value);
@@ -52,6 +58,30 @@ SimpleTree<T>::SimpleTree(Node<T>* root) {
 template <typename T>
 SimpleTree<T>::~SimpleTree() {
     delete root;
+}
+
+template <typename T>
+int SimpleTree<T>::get_height(Node<T>* node) {
+    return node ? node->height : 0;
+}
+
+template <typename T>
+int SimpleTree<T>::get_subtree_size(Node<T>* node) {
+    return node ? node->subtree_size : 0;
+}
+
+template <typename T>
+void SimpleTree<T>::update_info(Node<T>* node) {
+    if (!node) {
+        return;
+    }
+    node->height = 1 + std::max(get_height(node->left), get_height(node->right));
+    node->subtree_size = 1 + get_subtree_size(node->left) + get_subtree_size(node->right);
+}
+
+template <typename T>
+int SimpleTree<T>::get_tree_height() {
+    return get_height(root);
 }
 
 template <typename T>
