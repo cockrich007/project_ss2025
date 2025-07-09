@@ -9,4 +9,10 @@ struct SplitedTree {
     SplitedTree(Node<T>* l, Node<T>* r);
 };
 
-#include "SplitedTree.cpp"
+// Impl
+
+template <typename T>
+SplitedTree<T>::SplitedTree(Node<T>* l, Node<T>* r) {
+    this->left = l;
+    this->right = r;
+}
