@@ -33,6 +33,8 @@ public:
         destruct(root);
     }
 
+    int get_tree_height();
+
     void insert(T key);
     void erase(T key);
     bool contains(T key);
@@ -88,6 +90,11 @@ void SplayTree<T>::update_info(Node<T>* node) {
     }
     node->height = 1 + std::max(get_height(node->left), get_height(node->right));
     node->subtree_size = 1 + get_subtree_size(node->left) + get_subtree_size(node->right);
+}
+
+template <typename T>
+int SplayTree<T>::get_tree_height() {
+    return get_height(root);
 }
 
 template <typename T>
