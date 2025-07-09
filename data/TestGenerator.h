@@ -27,4 +27,8 @@ public:
 
 	// Заполняет вектор возрастающими значениями в количестве десять в степени power_of_ten
 	void DataStress(int power_of_ten);
+    
+    
+    
+    
 };
