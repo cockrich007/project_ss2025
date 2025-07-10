@@ -18,7 +18,7 @@ using nanoseconds = std::chrono::nanoseconds;
 std::random_device rd;
 std::mt19937 gen(rd());
 
-/*void test_search() {
+void test_search() {
     std::vector<std::string> input_names = { "D:/ss25project/data/inputs/ascend_input.txt",
     "D:/ss25project/data/inputs/random_input1.txt",
     "D:/ss25project/data/inputs/random_input2.txt",
@@ -113,7 +113,7 @@ std::mt19937 gen(rd());
 
             for (int x = 0; x < Data_for_search.size(); x++) {
                 auto start = clocks::now();
-                //SimpleTree1.contains(Data_for_search[x]);
+                SimpleTree1.contains(Data_for_search[x]);
                 auto elapsed = clocks::now() - start;
                 outFile3 << SimpleTree1.get_tree_height() << " ";
                 outFile4 << std::chrono::duration_cast<nanoseconds>(elapsed).count() << " ";
@@ -216,7 +216,7 @@ std::mt19937 gen(rd());
     outFile7.close();
 }
 
-//int main() {
-//    test_search();
-//    return 0;
-//}
+int main() {
+    test_search();
+    return 0;
+}
