@@ -4,60 +4,59 @@
 
 template <typename T>
 struct SimpleTree {
- private:
+private:
     Node<T>* root;
-    int size;
+
+    void destruct(Node<T>* node);
 
     int get_height(Node<T>* node);
     int get_subtree_size(Node<T>* node);
     void update_info(Node<T>* node);
 
-    void erase(Node<T>* node, T value);
-    T find_by_id(int id, Node<T>* cur_node, int &pos);
-    void find_floor(T key, Node<T>* cur_node, T &local_max);
-    void find_ceiling(T key, Node<T>* cur_node, T &local_min);
+    Node<T>* find_by_key(Node<T>* node, T key);
+    Node<T>* insert(Node<T>* node, T key);
+    Node<T>* erase(Node<T>* node, T key);
 
- public:
+    Node<T>* min_in_subtree(Node<T>* node);
+    Node<T>* max_in_subtree(Node<T>* node);
+
+public:
     SimpleTree();
     SimpleTree(T key);
-    SimpleTree(Node<T>* root);
     ~SimpleTree();
 
     int get_tree_height();
 
-    void insert(T value);
-    void erase(T value);
-    T find_by_id(int id);
-    T floor(T value);
-    T ceiling(T value);
+    bool contains(T key);
+    void insert(T key);
+    void erase(T key);
 };
 
 // Impl
 
-#include <iostream>
-#include <numeric>
-#include <limits>
-
 template <typename T>
 SimpleTree<T>::SimpleTree() {
     root = nullptr;
-    size = 0;
 }
 
 template <typename T>
-SimpleTree<T>::SimpleTree(T first_value) {
-    root = new Node<T>(first_value);
-    size = 1;
-}
-
-template <typename T>
-SimpleTree<T>::SimpleTree(Node<T>* root) {
-    this->root = root;
+SimpleTree<T>::SimpleTree(T key) {
+    root = new Node<T>(key);
 }
 
 template <typename T>
 SimpleTree<T>::~SimpleTree() {
-    delete root;
+    destruct(root);
+}
+
+template <typename T>
+void SimpleTree<T>::destruct(Node<T>* node) {
+    if (!node) {
+        return;
+    }
+    destruct(node->left);
+    destruct(node->right);
+    delete node;
 }
 
 template <typename T>
@@ -85,171 +84,93 @@ int SimpleTree<T>::get_tree_height() {
 }
 
 template <typename T>
-void SimpleTree<T>::insert(T key) {
-    Node<T>* cur_node = root;
-    bool is_inserted = false;
-
-    if (root == nullptr) {
-        root = new Node<T>(key);
-        ++size;
-        return;
+Node<T>* SimpleTree<T>::min_in_subtree(Node<T>* node) {
+    while (node && node->left) {
+        node = node->left;
     }
-
-    while (!is_inserted) {
-        if (cur_node->key > key) {
-            if (cur_node->left == nullptr) {
-                cur_node->left = new Node<T>(key);
-                is_inserted = true;
-            }
-            cur_node = cur_node->left;
-        } else if (cur_node->key < key) {
-            if (cur_node->right == nullptr) {
-                cur_node->right = new Node<T>(key);
-                is_inserted = true;
-            }
-            cur_node = cur_node->right;
-        } else {
-            return;
-        }
-    }
-    ++size;
+    return node;
 }
 
 template <typename T>
-void SimpleTree<T>::erase(Node<T>* node, T key) {
-    if (node == nullptr) {
-        return;
+Node<T>* SimpleTree<T>::max_in_subtree(Node<T>* node) {
+    while (node && node->right) {
+        node = node->right;
+    }
+    return node;
+}
+
+template <typename T>
+Node<T>* SimpleTree<T>::find_by_key(Node<T>* node, T key) {
+    if (!node) {
+        return nullptr;
+    }
+    if (node->key == key) {
+        return node;
+    }
+    if (node->key > key) {
+        return find_by_key(node->left, key);
+    } else {
+        return find_by_key(node->right, key);
+    }
+}
+
+template <typename T>
+bool SimpleTree<T>::contains(T key) {
+    Node<T>* node = find_by_key(root, key);
+    return node && (node->key == key);
+}
+
+template <typename T>
+Node<T>* SimpleTree<T>::insert(Node<T>* node, T key) {
+    if (!node) {
+        node = new Node<T>(key);
+        return node;
+    }
+    if (node->key > key) {
+        node->left = insert(node->left, key);
+        update_info(node);
+        return node;
+    } else if (node->key < key) {
+        node->right = insert(node->right, key);
+        update_info(node);
+        return node;
+    }
+    return node;
+}
+
+template <typename T>
+void SimpleTree<T>::insert(T key) {
+    root = insert(root, key);
+}
+
+template <typename T>
+Node<T>* SimpleTree<T>::erase(Node<T>* node, T key) {
+    if (!node) {
+        return nullptr;
     }
     if (key < node->key) {
-        erase(node->left, key);
+        node->left = erase(node->left, key);
     } else if (key > node->key) {
-        erase(node->right, key);
+        node->right = erase(node->right, key);
     } else {
-        if (node->left == nullptr && node->right == nullptr) {
+        if (!node->left) {
+            Node<T>* right_child = node->right;
             delete node;
-            node = nullptr;
-            --size;
-        } else if (node->left == nullptr) {
-            Node<T>* temp = node;
-            node = node->right;
-            delete temp;
-            --size;
-        } else if (node->right == nullptr) {
-            Node<T>* temp = node;
-            node = node->left;
-            delete temp;
-            --size;
-        } else {
-            Node<T>* min_right = node->right;
-            while (min_right->left != nullptr) {
-                min_right = min_right->left;
-            }
-            node->key = min_right->key;
-            erase(node->right, min_right->key);
+            return right_child;
+        } else if (!node->right) {
+            Node<T>* left_child = node->left;
+            delete node;
+            return left_child;
         }
+        Node<T>* min_right = min_in_subtree(node->right);
+        node->key = min_right->key;
+        node->right = erase(node->right, min_right->key);
     }
+    update_info(node);
+    return node;
 }
 
 template <typename T>
 void SimpleTree<T>::erase(T key) {
-    erase(root, key);
-}
-
-template <typename T>
-T SimpleTree<T>::find_by_id(int index, Node<T>* cur_node, int &pos) {
-    int buffer;
-    if (cur_node->left != nullptr) {
-        if ((buffer = find_by_id(index, cur_node->left, pos)) != std::numeric_limits<T>::max()) {
-            return buffer;
-        }
-    }
-    if (pos == index) {
-        return cur_node->key;
-    }
-    ++pos;
-    if (cur_node->right != nullptr) {
-        if ((buffer = find_by_id(index, cur_node->right, pos)) != std::numeric_limits<T>::max()) {
-            return buffer;
-        }
-    }
-    return std::numeric_limits<T>::max();
-}
-
-template <typename T>
-T SimpleTree<T>::find_by_id(int index) {
-    int pos = 0;
-    if (root == nullptr) {
-        return std::numeric_limits<T>::max();
-    }
-    return find_by_id(index, root, pos);
-}
-
-template <typename T>
-void SimpleTree<T>::find_floor(T key, Node<T>* cur_node, T &local_max) {
-    if (cur_node->key > key) {
-        if (cur_node->left != nullptr) {
-            find_floor(key, cur_node->left, local_max);
-        }
-    } else if (cur_node->key < key) {
-        if (local_max < cur_node->key) {
-            local_max = cur_node->key;
-        }
-        if (cur_node->right != nullptr) {
-            find_floor(key, cur_node->right, local_max);
-        }
-    } else {
-        cur_node = cur_node->left;
-        if (cur_node == nullptr) {
-            return;
-        }
-        while (cur_node->right != nullptr) {
-            cur_node = cur_node->right;
-        }
-        local_max = cur_node->key;
-    }
-}
-
-template <typename T>
-T SimpleTree<T>::floor(T key) {
-    T local_max = std::numeric_limits<T>::min();
-    if (root == nullptr) {
-        return std::numeric_limits<T>::min();
-    }
-    find_floor(key, root, local_max);
-    return local_max;
-}
-
-template <typename T>
-void SimpleTree<T>::find_ceiling(T key, Node<T>* cur_node, T &local_min) {
-    if (cur_node->key > key) {
-        if (local_min > cur_node->key) {
-            local_min = cur_node->key;
-        }
-        if (cur_node->left != nullptr) {
-            find_ceiling(key, cur_node->left, local_min);
-        }
-    } else if (cur_node->key < key) {
-        if (cur_node->right != nullptr) {
-            find_ceiling(key, cur_node->right, local_min);
-        }
-    } else {
-        cur_node = cur_node->right;
-        if (cur_node == nullptr) {
-            return;
-        }
-        while (cur_node->left != nullptr) {
-            cur_node = cur_node->left;
-        }
-        local_min = cur_node->key;
-    }
-}
-
-template <typename T>
-T SimpleTree<T>::ceiling(T key) {
-    T local_min = std::numeric_limits<T>::max();
-    if (root == nullptr) {
-        return std::numeric_limits<T>::max();
-    }
-    find_ceiling(key, root, local_min);
-    return local_min;
+    root = erase(root, key);
 }

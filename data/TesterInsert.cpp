@@ -144,7 +144,7 @@ void test_insert() {
     outFile6.close();
 }
 
-int main() {
+/*int main() {
     test_insert();
     return 0;
-}
+}*/
