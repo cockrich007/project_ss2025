@@ -6,6 +6,7 @@
 #include <sstream>
 #include <iostream>
 #include <random>
+#include <set>
 
 #include "../src/SimpleTree.h"
 #include "../src/SplayTree.h"
@@ -30,10 +31,14 @@ void test_search() {
 
     size_t length_input_names = input_names.size();
 
+    std::set<int> set_test;
+
+    
+
     std::ofstream outFile1("D:/ss25project/data/outputs/searches/Splay_search_height.csv");
     std::ofstream outFile2("D:/ss25project/data/outputs/searches/Splay_search_time.csv");
 
-    for (size_t i = 0; i < length_input_names; i++) //erase time для Splay
+    for (size_t i = 0; i < length_input_names; i++) //search time для Splay
     {
         SplayTree<int> SplayTree1;
 
@@ -50,18 +55,16 @@ void test_search() {
             while (std::getline(inputFile, line)) {
                 std::istringstream iss(line);
                 std::string word;
-                int iter = 0;
                 while (iss >> word) {
-                    Data_for_search.push_back(iter);
-                    iter++;
-                    SplayTree1.insert((int)std::stoi(word));
+                    Data_for_search.push_back(std::stoi(word));
+                    SplayTree1.insert(std::stoi(word));
                 }
             }
             std::shuffle(Data_for_search.begin(), Data_for_search.end(), gen);
 
             for (int x = 0; x < Data_for_search.size(); x++) {
                 auto start = clocks::now();
-                SplayTree1.find_by_id(Data_for_search[x]);
+                SplayTree1.contains(Data_for_search[x]);
                 auto elapsed = clocks::now() - start;
                 outFile1 << SplayTree1.get_tree_height() << " ";
                 outFile2 << std::chrono::duration_cast<nanoseconds>(elapsed).count() << " ";
@@ -82,7 +85,7 @@ void test_search() {
     std::ofstream outFile3("D:/ss25project/data/outputs/searches/Simple_search_height.csv");
     std::ofstream outFile4("D:/ss25project/data/outputs/searches/Simple_search_time.csv");
 
-    for (size_t i = 0; i < length_input_names; i++) //erase time для Simple
+    for (size_t i = 0; i < length_input_names; i++) //search time для Simple
     {
         SimpleTree<int> SimpleTree1;
 
@@ -110,7 +113,7 @@ void test_search() {
 
             for (int x = 0; x < Data_for_search.size(); x++) {
                 auto start = clocks::now();
-                SimpleTree1.find_by_id(Data_for_search[x]);
+                //SimpleTree1.contains(Data_for_search[x]);
                 auto elapsed = clocks::now() - start;
                 outFile3 << SimpleTree1.get_tree_height() << " ";
                 outFile4 << std::chrono::duration_cast<nanoseconds>(elapsed).count() << " ";
@@ -131,7 +134,7 @@ void test_search() {
     std::ofstream outFile5("D:/ss25project/data/outputs/searches/Treap_search_height.csv");
     std::ofstream outFile6("D:/ss25project/data/outputs/searches/Treap_search_time.csv");
 
-    for (size_t i = 0; i < length_input_names; i++) //erase time для Simple
+    for (size_t i = 0; i < length_input_names; i++) //search time для Simple
     {
         Treap<int> Treap1;
 
@@ -148,18 +151,16 @@ void test_search() {
             while (std::getline(inputFile, line)) {
                 std::istringstream iss(line);
                 std::string word;
-                int iter = 0;
                 while (iss >> word) {
-                    Data_for_search.push_back(iter);
-                    iter++;
-                    Treap1.insert((int)std::stoi(word));
+                    Data_for_search.push_back(std::stoi(word));
+                    Treap1.insert(std::stoi(word));
                 }
             }
             std::shuffle(Data_for_search.begin(), Data_for_search.end(), gen);
 
             for (int x = 0; x < Data_for_search.size(); x++) {
                 auto start = clocks::now();
-                Treap1.find_by_id(Data_for_search[x]);
+                Treap1.contains(Data_for_search[x]);
                 auto elapsed = clocks::now() - start;
                 outFile5 << Treap1.get_tree_height() << " ";
                 outFile6 << std::chrono::duration_cast<nanoseconds>(elapsed).count() << " ";
@@ -176,9 +177,46 @@ void test_search() {
     outFile5.close();
     outFile6.close();
 
+
+    std::ofstream outFile7("D:/ss25project/data/outputs/searches/Set_search_time.csv");
+
+    for (size_t i = 0; i < length_input_names; i++) //search time для set
+    {
+        std::ifstream inputFile;
+        inputFile.open(input_names[i]);
+
+        std::vector<int> Data_for_search;
+
+        outFile7 << "Тестовые данные " << i + 1 << ": ";
+
+        if (inputFile.is_open()) {
+            std::string line;
+            while (std::getline(inputFile, line)) {
+                std::istringstream iss(line);
+                std::string word;
+                while (iss >> word) {
+                    Data_for_search.push_back(std::stoi(word));
+                    set_test.insert(std::stoi(word));
+                }
+            }
+            std::shuffle(Data_for_search.begin(), Data_for_search.end(), gen);
+
+            for (int x = 0; x < Data_for_search.size(); x++) {
+                auto start = clocks::now();
+                set_test.find(Data_for_search[x]);
+                auto elapsed = clocks::now() - start;
+                outFile7 << std::chrono::duration_cast<nanoseconds>(elapsed).count() << " ";
+                outFile7.flush();
+            }
+            outFile7 << std::endl;
+            outFile7.flush();
+        }
+        inputFile.close();
+    }
+    outFile7.close();
 }
 
-int main() {
-    test_search();
-    return 0;
-}
+//int main() {
+//    test_search();
+//    return 0;
+//}

@@ -5,6 +5,7 @@
 #include <stdexcept>
 #include <sstream>
 #include <iostream>
+#include <set>
 
 #include "../src/SimpleTree.h"
 #include "../src/SplayTree.h"
@@ -142,6 +143,42 @@ void test_insert() {
     }
     outFile5.close();
     outFile6.close();
+
+
+    std::ofstream outFile7("D:/ss25project/data/outputs/inserts/Set_insert_time.csv");
+
+
+    for (size_t i = 0; i < length_input_names; i++) //insert time для Set
+    {
+        std::set<int> set_test;
+
+        std::ifstream inputFile;
+        inputFile.open(input_names[i]);
+
+        if (inputFile.is_open()) {
+            std::string line;
+
+            outFile7 << "Тестовые данные " << i + 1 << ": ";
+
+            while (std::getline(inputFile, line)) {
+                std::istringstream iss(line);
+                std::string word;
+                while (iss >> word) {
+                    auto start = clocks::now();
+                    set_test.insert((int)std::stoi(word));
+                    auto elapsed = clocks::now() - start;
+                    outFile7 << std::chrono::duration_cast<nanoseconds>(elapsed).count() << " ";
+                }
+            }
+        }
+        else {
+            std::cout << "Не был открыт поток";
+        }
+        std::cout << '\n';
+        inputFile.close();
+        outFile7 << std::endl;
+    }
+    outFile7.close();
 }
 
 int main() {

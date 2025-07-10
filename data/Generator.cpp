@@ -17,49 +17,49 @@ void generate_tests() {
     std::ofstream outfile;
 
     outfile.open("D:/ss25project/data/inputs/ascend_input.txt");
-    gen.DataAscend(0, 100);
+    gen.DataAscend(0, 1000);
     for (auto element : gen.Data) {
         outfile << element << ' ';
     }
     outfile.close();
 
     outfile.open("D:/ss25project/data/inputs/random_input1.txt");
-    gen.DataRandom(100, 0, 100);
+    gen.DataRandom(1000, 0, 1000);
     for (auto element : gen.Data) {
         outfile << element << ' ';
     }
     outfile.close();
 
     outfile.open("D:/ss25project/data/inputs/random_input2.txt");
-    gen.DataRandom(100, 0, 100);
+    gen.DataRandom(1000, 0, 1000);
     for (auto element : gen.Data) {
         outfile << element << ' ';
     }
     outfile.close();
 
     outfile.open("D:/ss25project/data/inputs/OddEven_input_frac2_inc.txt");
-    gen.DataOddEven(100, 2, true);
+    gen.DataOddEven(1000, 2, true);
     for (auto element : gen.Data) {
         outfile << element << ' ';
     }
     outfile.close();
 
     outfile.open("D:/ss25project/data/inputs/OddEven_input_frac5_dic.txt");
-    gen.DataOddEven(100, 5, false);
+    gen.DataOddEven(1000, 5, false);
     for (auto element : gen.Data) {
         outfile << element << ' ';
     }
     outfile.close();
 
     outfile.open("D:/ss25project/data/inputs/Jump_Input_inc.txt");
-    gen.DataJump(100, true);
+    gen.DataJump(1000, true);
     for (auto element : gen.Data) {
         outfile << element << ' ';
     }
     outfile.close();
 
     outfile.open("D:/ss25project/data/inputs/Jump_Input_dic.txt");
-    gen.DataJump(100, false);
+    gen.DataJump(1000, false);
     for (auto element : gen.Data) {
         outfile << element << ' ';
     }
@@ -78,4 +78,9 @@ void generate_tests() {
         outfile << element << ' ';
     }
     outfile.close();
+}
+
+void main() {
+    generate_tests();
+    return;
 }

@@ -6,6 +6,7 @@
 #include <sstream>
 #include <iostream>
 #include <random>
+#include <set>
 
 #include "../src/SimpleTree.h"
 #include "../src/SplayTree.h"
@@ -123,7 +124,7 @@ void test_erase() {
     std::ofstream outFile5("D:/ss25project/data/outputs/erases/Treap_erase_height.csv");
     std::ofstream outFile6("D:/ss25project/data/outputs/erases/Treap_erase_time.csv");
 
-    for (size_t i = 0; i < length_input_names; i++) //erase time для Simple
+    for (size_t i = 0; i < length_input_names; i++) //erase time для Treap
     {
         Treap<int> Treap1;
 
@@ -166,6 +167,45 @@ void test_erase() {
     outFile5.close();
     outFile6.close();
     
+    std::ofstream outFile7("D:/ss25project/data/outputs/erases/Set_erase_time.csv");
+
+    for (size_t i = 0; i < length_input_names; i++) //erase time для Set
+    {
+        std::set<int> set_test;
+
+        std::ifstream inputFile;
+        inputFile.open(input_names[i]);
+
+        std::vector<int> Data_for_erase;
+
+        outFile7 << "Тестовые данные " << i + 1 << ": ";
+
+        if (inputFile.is_open()) {
+            std::string line;
+            while (std::getline(inputFile, line)) {
+                std::istringstream iss(line);
+                std::string word;
+                while (iss >> word) {
+                    Data_for_erase.push_back(std::stoi(word));
+                    set_test.insert((int)std::stoi(word));
+                }
+            }
+            std::shuffle(Data_for_erase.begin(), Data_for_erase.end(), gen);
+
+            for (int x = 0; x < Data_for_erase.size(); x++) {
+                auto start = clocks::now();
+                set_test.erase(Data_for_erase[x]);
+                auto elapsed = clocks::now() - start;
+                outFile7 << std::chrono::duration_cast<nanoseconds>(elapsed).count() << " ";
+                outFile7.flush();
+            }
+            outFile7 << std::endl;
+            outFile7.flush();
+        }
+        inputFile.close();
+    }
+    outFile7.close();
+
 
 }
 
