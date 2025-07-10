@@ -18,7 +18,7 @@ using nanoseconds = std::chrono::nanoseconds;
 std::random_device rd;
 std::mt19937 gen(rd());
 
-void test_erase() {
+/*void test_erase() {
     std::vector<std::string> input_names = { "D:/ss25project/data/inputs/ascend_input.txt",
     "D:/ss25project/data/inputs/random_input1.txt",
     "D:/ss25project/data/inputs/random_input2.txt",
@@ -212,4 +212,4 @@ void test_erase() {
 int main() {
     test_erase();
     return 0;
-}
+}*/
